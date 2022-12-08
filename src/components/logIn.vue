@@ -71,12 +71,12 @@ export default {
                             if(response.data.state===200){
                                 this.$message.success(response.data)
                                 //将登录名存入token 用于后面的登录验证
-                                window.sessionStorage.setItem('token',response.data.user.userName)
+                                window.sessionStorage.setItem('token',response.data.data.userName)
                                 //跳转页面
                                 this.$router.push('/home')
                                 return
                             }
-                            if(response.data.state===403)this.$message.error(response.data)
+                            if(response.data.state===400)this.$message.error(response.data)
                     },
                     error => {
                         this.$message.error(error.message)
